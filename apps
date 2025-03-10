@@ -1,0 +1,99 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(EidApp());
+}
+
+class EidApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: EidScreen(),
+    );
+  }
+}
+
+class EidScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.green[100], // Changed background to green
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Greeting Text
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16.0),
+              child: Text(
+                'Eid Mubarak 2025!', // Changed text
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            // Eid Image
+            Container(
+              height: 200,
+              width: 200,
+              child: Image.network(
+                'https://img.pikbest.com/png-images/20250114/an-image-featuring-the-text-eid-mubarak-2025-in-bold_11383919.png!sw800', // CHANGE IMAGE URL
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(height: 20),
+            // Button to navigate to next page
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NextPage()),
+                );
+              },
+              child: Text("Go to Next Page"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NextPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.green[200], // Updated for consistency
+      appBar: AppBar(
+        title: Text('Next Page'),
+        backgroundColor: Colors.green[800],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Welcome to the Eid Celebration!',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            SizedBox(height: 20),
+            // Button to go back to the home page
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Back to Home"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
